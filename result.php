@@ -1,6 +1,6 @@
 <?php include("head.html"); ?>
 
-<a href="ec2-3-140-184-115.us-east-2.compute.amazonaws.com/test_alternant/">
+<a href="/test_alternant">
     <img src="assets/60606.png">
 </a>
 
@@ -53,7 +53,7 @@ if($min && $max && strlen($username) > 3) {
 }
 ?>
 
-<a id="button_home" href="ec2-3-140-184-115.us-east-2.compute.amazonaws.com/test_alternant/">
+<a id="button_home" href="/test_alternant">
     <button>Revenir au menu</button>
 </a>
 
