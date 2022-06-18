@@ -25,9 +25,7 @@ if($min && $max && strlen($username) >= 3) {
 
         $resultsList[$i] = $row;
 
-        }
-
-        ?>
+        } ?>
 
         <table class="array">
             <tr>
@@ -37,9 +35,9 @@ if($min && $max && strlen($username) >= 3) {
         
         <!-- Première ligne du tableau -->
         <?php foreach ($resultsList as $key => $result) : ?>
-            <td>
-                <?= $key ?>
-            </td>
+                <td>
+                    <?= $key ?>
+                </td>
 
         <?php endforeach ?>
             </tr>
@@ -48,27 +46,34 @@ if($min && $max && strlen($username) >= 3) {
 
         <?php foreach ($resultsList as $key => $result) : ?>
 
-            echo '<tr>';
-            echo '<td>'. $key .'</td>';
+            <tr>
+                <td>
+                   <?= $key ?>
+                </td>
 
-            // Affiche tout les résultats de la ligne
-            foreach ($result as $key2 => $value) {
-                echo '<td>'. $value .'</td>';
-            }
-            echo '</tr>';
-        }
-        echo '</table>';
 
-        // Si il y a plus de 15 multiplications croisées dans le tableau
-        if(($max - $min) > 13) {?>
-        
+            <!-- // Affiche tout les résultats de la ligne -->
+            <?php foreach ($result as $key2 => $value) : ?>
+
+                <td>
+                    <?= $value ?>
+                </td>
+
+            <?php endforeach ?>
+            </tr>
+        <?php endforeach ?>
+
+        </table>
+
+        <!-- Si il y a plus de 15 multiplications croisées dans le tableau -->
+        <?php if(($max - $min) > 13) : ?>
             <style>
                 td {
                     padding: 5px 25px!important;
                 }
             </style>
          <?php
-        }
+        endif;
     }
     else {
         echo "<p>Erreur: Vérifier l'entrée pour les champs min et max du formulaire</p>";

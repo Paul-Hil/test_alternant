@@ -62,7 +62,6 @@ table.array {
 td {
     border: solid 2px black;
     padding: 5px 40px;
-    overflow: auto;
 }
 
 a#button_home {
@@ -80,4 +79,11 @@ a#button_home {
 
 a#button_home:hover {
     background-color: rgb(170, 169, 169);
+}
+
+@media screen and (max-width: 1000px) {
+    td {
+        border: solid 2px black;
+        padding: 5px 15px;
+    }  
 }
