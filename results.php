@@ -23,7 +23,8 @@ if($min && $max && strlen($username) > 3) {
                 $row[$j] = $i * $j;
             }
 
-        $results[$i] = $row; 
+        $results[$i] = $row;
+
         }
 
         echo '<table class="array"><tr><td>&nbsp;</td>';
@@ -43,18 +44,31 @@ if($min && $max && strlen($username) > 3) {
             echo '</tr>';
         }
         echo '</table>';
+
+        // Si il y a plus de 15 multiplications croisées
+        if(($max - $min) > 15) {?>
+        
+            <style>
+                td {
+                    padding: 5px 20px!important;
+                }
+            </style>
+
+            
+        <?php
+        }
     }
     else {
-        echo '<p>Error: Mauvaise entrées dans les champs</p>';
+        echo "<p>Erreur: Vérifier l'entrée pour les champs min et max du formulaire</p>";
     }
 
 } else {
-    echo '<p>Error: Mauvaise entrées dans un des champs</p>';
+    echo '<p>Erreur: Mauvaise entrées dans un des champs du formulaire</p>';
 }
 ?>
 
 <a id="button_home" href="/test_alternant">
-    <button>Revenir au menu</button>
+    Revenir au menu
 </a>
 
 </body>

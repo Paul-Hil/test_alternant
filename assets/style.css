@@ -15,11 +15,15 @@ form {
 }
 
 div.label { 
-    display: table-row;  
+    display: table-row;
+    padding: 10px; 
 }
 
 label { display: table-cell; }
-div > input { display: table-cell; }
+div > input { 
+    display: table-cell;
+    margin: 10px;
+}
 
 #submit {
     margin: 25px;
@@ -51,14 +55,14 @@ td {
     overflow: auto;
 }
 
-#button_home {
-    position: absolute;
-    margin-top: 25px;
-    right: 45vw;
-
-}
-
-button {
-    position: relative;
-    padding: 10px;
+a#button_home {
+    text-decoration: none;
+    color: black;
+    border: solid 2px white;
+    background-color: white;
+    display: block;
+    margin: auto;
+    width: 10vw;
+    text-align: center;
+    margin-top: 40px;
 }
