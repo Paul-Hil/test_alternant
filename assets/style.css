@@ -41,6 +41,10 @@ img {
     border-radius: 7px;
 }
 
+img:hover {
+    background-color: rgb(170, 169, 169);
+}
+
 table {
     background-color: white;
     color: black;
@@ -58,11 +62,15 @@ td {
 a#button_home {
     text-decoration: none;
     color: black;
-    border: solid 2px white;
+    border-radius: 20px;
     background-color: white;
     display: block;
     margin: auto;
     width: 10vw;
     text-align: center;
     margin-top: 40px;
+    padding: 12px;
+}
+a#button_home:hover {
+    background-color: rgb(170, 169, 169);
 }

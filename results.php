@@ -45,7 +45,7 @@ if($min && $max && strlen($username) > 3) {
         }
         echo '</table>';
 
-        // Si il y a plus de 15 multiplications croisées
+        // Si il y a plus de 15 multiplications croisées dans le tableau
         if(($max - $min) > 15) {?>
         
             <style>
