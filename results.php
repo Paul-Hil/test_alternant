@@ -6,16 +6,16 @@
 
 <?php
 
-$username = $_GET['username'];
+$username = ucfirst($_GET['username']);
 
 $min = filter_var($_GET['min'], FILTER_VALIDATE_INT);
 $max = filter_var($_GET['max'], FILTER_VALIDATE_INT);
 
-if($min && $max && strlen($username) > 3) {
+if($min && $max && strlen($username) >= 3) {
     if($min < $max) {
-        echo '<p>Bonjour ' . $username . ', voici la table demandée</p>';
+        echo '<p>Bonjour ' . $username . ', voici la table demandée :</p>';
 
-        $results = [];
+        $resultsList = [];
 
         for ($i=$min; $i <= $max; $i++) {
 
@@ -23,21 +23,35 @@ if($min && $max && strlen($username) > 3) {
                 $row[$j] = $i * $j;
             }
 
-        $results[$i] = $row;
+        $resultsList[$i] = $row;
 
         }
 
-        echo '<table class="array"><tr><td>&nbsp;</td>';
+        ?>
 
-        foreach ($results as $key => $result) {
-            echo '<td>'. $key .'</td>';
-        }
+        <table class="array">
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+        
+        <!-- Première ligne du tableau -->
+        <?php foreach ($resultsList as $key => $result) : ?>
+            <td>
+                <?= $key ?>
+            </td>
 
-        echo '</tr>';
+        <?php endforeach ?>
+            </tr>
 
-        foreach ($results as $key => $result) {
+        <!-- // Pour chaque loop, une nouvelle ligne -->
+
+        <?php foreach ($resultsList as $key => $result) : ?>
+
             echo '<tr>';
             echo '<td>'. $key .'</td>';
+
+            // Affiche tout les résultats de la ligne
             foreach ($result as $key2 => $value) {
                 echo '<td>'. $value .'</td>';
             }
@@ -46,16 +60,14 @@ if($min && $max && strlen($username) > 3) {
         echo '</table>';
 
         // Si il y a plus de 15 multiplications croisées dans le tableau
-        if(($max - $min) > 15) {?>
+        if(($max - $min) > 13) {?>
         
             <style>
                 td {
-                    padding: 5px 20px!important;
+                    padding: 5px 25px!important;
                 }
             </style>
-
-            
-        <?php
+         <?php
         }
     }
     else {
