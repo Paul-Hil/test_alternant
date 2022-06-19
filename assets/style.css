@@ -5,11 +5,17 @@ body {
     color: white;
 }
 
-h1,p {
+h1 {
     text-align: center;
+    border: white solid 2px;
+    width: 20%;
+    margin: auto;
+    margin-top: 30px;
+    border-radius: 20px;
 }
 
 p {
+    text-align: center;
     font-size: larger;
 }
 
@@ -29,7 +35,7 @@ div > input {
     margin: 10px;
 }
 
-#submit {
+input#submit {
     margin: 25px;
     padding: 12px;
     border-radius: 20px;
@@ -47,10 +53,6 @@ img {
     border-radius: 7px;
 }
 
-img:hover {
-    background-color: rgb(170, 169, 169);
-}
-
 table.array {
     background-color: white;
     color: black;
@@ -60,8 +62,13 @@ table.array {
 }
 
 td {
-    border: solid 2px black;
-    padding: 5px 40px;
+    border: solid 0.5px black;
+    padding: 5px 20px;
+}
+
+td:hover {
+    color: white;
+    background-color: black;
 }
 
 a#button_home {
@@ -77,13 +84,12 @@ a#button_home {
     padding: 12px;
 }
 
-a#button_home:hover {
+img:hover, input#submit:hover, a#button_home:hover {
     background-color: rgb(170, 169, 169);
 }
 
 @media screen and (max-width: 1000px) {
     td {
-        border: solid 2px black;
-        padding: 5px 15px;
+        padding: 5px 8px;
     }  
 }

@@ -1,92 +1,107 @@
 <?php include("head.html"); ?>
 
 <a href="/test_alternant">
-    <img src="assets/60606.png">
+    <img src="assets/60606.png" alt="Icone flèche gauche">
 </a>
 
 <?php
+$username = ucfirst(filter_input(INPUT_GET, 'username', FILTER_UNSAFE_RAW));
 
-$username = ucfirst($_GET['username']);
+$min = filter_input(INPUT_GET, 'min', FILTER_VALIDATE_INT);
+$max = filter_input(INPUT_GET, 'max', FILTER_VALIDATE_INT);
 
-$min = filter_var($_GET['min'], FILTER_VALIDATE_INT);
-$max = filter_var($_GET['max'], FILTER_VALIDATE_INT);
-
+// Si toutes les données sont bien récupérées
 if($min && $max && strlen($username) >= 3) {
     if($min < $max) {
+
         echo '<p>Bonjour ' . $username . ', voici la table demandée :</p>';
 
-        $resultsList = [];
+        // Création du tableau contenant tout les résultats
+        $resultsList = createArray($min, $max);
 
-        for ($i=$min; $i <= $max; $i++) {
+        // Affichage des résultats
+        displayArray($resultsList); 
 
-            for ($j=$min; $j <= $max; $j++) {
-                $row[$j] = $i * $j;
-            }
+        $nbOfRow = ($max - $min);
 
-        $resultsList[$i] = $row;
+        // Si il y a plus de 15 multiplications croisées dans le tableau 
+        if($nbOfRow >= 20) {
 
-        } ?>
+            // Réduction du padding % $nbOfRow
+            $nbOfPixels = 12 * (1 - ($nbOfRow / 100));
 
-        <table class="array">
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-        
-        <!-- Première ligne du tableau -->
-        <?php foreach ($resultsList as $key => $result) : ?>
-                <td>
-                    <?= $key ?>
-                </td>
-
-        <?php endforeach ?>
-            </tr>
-
-        <!-- // Pour chaque loop, une nouvelle ligne -->
-
-        <?php foreach ($resultsList as $key => $result) : ?>
-
-            <tr>
-                <td>
-                   <?= $key ?>
-                </td>
-
-
-            <!-- // Affiche tout les résultats de la ligne -->
-            <?php foreach ($result as $key2 => $value) : ?>
-
-                <td>
-                    <?= $value ?>
-                </td>
-
-            <?php endforeach ?>
-            </tr>
-        <?php endforeach ?>
-
-        </table>
-
-        <!-- Si il y a plus de 15 multiplications croisées dans le tableau -->
-        <?php if(($max - $min) > 13) : ?>
-            <style>
+           echo '<style>
                 td {
-                    padding: 5px 25px!important;
+                    padding: 4px '.$nbOfPixels.'px;
                 }
-            </style>
-         <?php
-        endif;
+            </style>';
+        }
+    } else {
+        echo "<p>Erreur: Champs min & max incorrects</p>";
     }
-    else {
-        echo "<p>Erreur: Vérifier l'entrée pour les champs min et max du formulaire</p>";
-    }
-
 } else {
-    echo '<p>Erreur: Mauvaise entrées dans un des champs du formulaire</p>';
+    echo '<p>Erreur: Mauvaise entrée dans un des champs du formulaire</p>';
 }
-?>
 
-<a id="button_home" href="/test_alternant">
-    Revenir au menu
-</a>
+function createArray($min, $max) {
+    $resultsList = [];
 
-</body>
+    for ($i=$min; $i <= $max; $i++) {
+
+        $row = [];
+
+        for ($j=$min; $j <= $max; $j++) {
+            $row[] = $i * $j;
+        }
+
+    // Tableau contenant les résultats
+    $resultsList[$i] = $row;
+    }
+
+    return $resultsList;
+}
+
+function displayArray($resultsList) { ?>
+    <table class="array">
+        <tbody>
+
+        <!-- Première ligne du tableau -->
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+
+    <?php foreach ($resultsList as $key => $result) : ?>
+            <td>
+                <?= $key ?>
+            </td>
+
+    <?php endforeach ?>
+        </tr>
+
+    <!-- // Pour chaque tour dans la boucle, une nouvelle ligne -->
+    <?php foreach ($resultsList as $key => $result) : ?>
+        <tr>
+            <td>
+                <?= $key ?>
+            </td>
+
+        <!-- // Affiche tout les résultats de la ligne -->
+        <?php foreach ($result as $key2 => $value) : ?>
+            <td>
+                <?= $value ?>
+            </td>
+
+        <?php endforeach;
+
+    echo '</tr>';
+
+    endforeach;
+
+    echo '</tbody></table>';
+}?>
+
+    <a id="button_home" href="/test_alternant">Revenir au menu</a>
+
+    </body>
 </html>
