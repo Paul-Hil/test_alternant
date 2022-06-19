@@ -1,5 +1,5 @@
 <?php include("head.html"); ?>
-        <form action="/test_alternant/results.php" method="get">
+        <form action="/results.php" method="get">
             <div class="label">
                 <label for="username">Quel est votre prénom :</label>
                 <input type="text" id="username" name="username">

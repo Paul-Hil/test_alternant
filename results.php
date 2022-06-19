@@ -1,6 +1,6 @@
 <?php include("head.html"); ?>
 
-<a href="/test_alternant">
+<a href="/">
     <img src="assets/60606.png" alt="Icone flèche gauche">
 </a>
 
@@ -101,7 +101,7 @@ function displayArray($resultsList) { ?>
     echo '</tbody></table>';
 }?>
 
-    <a id="button_home" href="/test_alternant">Revenir au menu</a>
+    <a id="button_home" href="/">Revenir au menu</a>
 
     </body>
 </html>
